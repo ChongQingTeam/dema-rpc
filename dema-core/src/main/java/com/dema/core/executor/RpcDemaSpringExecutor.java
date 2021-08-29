@@ -5,6 +5,7 @@ import com.dema.core.common.RpcDemaProperties;
 import com.dema.metadata.report.ServiceMeta;
 import com.dema.registry.enums.RegistryType;
 import com.dema.registry.factory.RegistryFactory;
+import com.dema.registry.service.RegistryService;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
@@ -97,8 +98,13 @@ public class RpcDemaSpringExecutor implements ApplicationContextAware, Initializ
                 serviceMeta.setValue(demaService.value());
                 serviceMeta.setVersion(demaService.version());
                 //注册到注册中心
-                RegistryFactory.getRegistryServiceInstance(rpcDemaProperties.getRegistryAddress(), RegistryType.valueOf(rpcDemaProperties.getRegistryType()));
-                //本地缓存
+                RegistryService registry = null;
+                try {
+                    registry = RegistryFactory.getRegistryServiceInstance(rpcDemaProperties.getRegistryAddress(), RegistryType.valueOf(rpcDemaProperties.getRegistryType()));
+                    registry.register(serviceMeta);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         }
         return bean;

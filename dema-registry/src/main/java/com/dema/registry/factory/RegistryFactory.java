@@ -8,7 +8,7 @@ public class RegistryFactory {
 
     private static volatile RegistryService registryService;
 
-    public static  RegistryService getRegistryServiceInstance(String registryAddress, RegistryType type){
+    public static  RegistryService getRegistryServiceInstance(String registryAddress, RegistryType type) throws Exception {
         if (null == registryService) {
             synchronized (RegistryFactory.class) {
                 if (null == registryService) {

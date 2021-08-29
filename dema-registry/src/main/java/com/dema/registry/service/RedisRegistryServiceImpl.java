@@ -16,7 +16,7 @@ public class RedisRegistryServiceImpl implements RegistryService{
     }
 
     @Override
-    public List<ServiceMeta> discovery() {
+    public ServiceMeta discovery(String serviceName) {
         return null;
     }
 

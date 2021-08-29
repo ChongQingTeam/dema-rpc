@@ -6,9 +6,9 @@ import java.util.List;
 
 public interface RegistryService {
 
-    void register(ServiceMeta serviceMeta);
+    void register(ServiceMeta serviceMeta) throws Exception;
 
     void destory();
 
-    List<ServiceMeta> discovery();
+    ServiceMeta discovery(String serviceName) throws Exception;
 }
