@@ -21,5 +21,10 @@ public @interface ServiceDema {
      */
     String value() default "";
 
+    /**
+     * 接口版本
+     */
+    String version() default "1.0.0";
+
 
 }

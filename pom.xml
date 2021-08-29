@@ -22,10 +22,23 @@
     <modules>
         <module>dema-consumer</module>
         <module>dema-core</module>
+        <module>dema-metadata</module>
+        <module>dema-registry</module>
     </modules>
 
     <dependencyManagement>
-
+        <dependencies>
+            <dependency>
+                <groupId>io.netty</groupId>
+                <artifactId>netty-all</artifactId>
+                <version>4.1.42.Final</version>
+            </dependency>
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>1.18.2</version>
+            </dependency>
+        </dependencies>
     </dependencyManagement>
 
 </project>
